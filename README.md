@@ -5,14 +5,16 @@
 1. [Overview](#overview)
 2. [What is HOG+SVM?](#what-is-hogsvm)
 3. [Pipeline Structure](#pipeline-structure)
-4. [Usage Instructions](#usage-instructions)  
-   4.1. [Resizing Images](#1-resizing-images)  
-   4.2. [Labeling Images](#2-labeling-images)  
-   4.3. [Training the Model](#3-training-the-model)  
-   4.4. [Validating the Model](#4-validating-the-model)  
-   4.5. [Testing with Pre-trained Model](#5-testing-with-pre-trained-model)
-5. [Advantages and Disadvantages](#advantages-and-disadvantages)
-6. [License](#license)
+4. [Requirements](#requirements)
+5. [Usage Instructions](#usage-instructions)  
+   5.1. [Resizing Images](#1-resizing-images)  
+   5.2. [Labeling Images](#2-labeling-images)  
+   5.3. [Training the Model](#3-training-the-model)  
+   5.4. [Validating the Model](#4-validating-the-model)  
+   5.5. [Testing with Pre-trained Model](#5-testing-with-pre-trained-model)
+6. [Advantages and Disadvantages](#advantages-and-disadvantages)
+7. [License](#license)
+
 ## Overview
 
 This project implements an object detection pipeline using Histogram of Oriented Gradients (HOG) as a feature extractor and Support Vector Machines (SVM) as the classifier. It provides an example pipeline where images are resized, labeled, and trained using Dlib's object detection framework. 
@@ -48,6 +50,29 @@ object_detection_HOG-SVM_pipeline
     ├── detector4webcam.py
     └── train.py
 ```
+
+## Requirements
+
+Before running the pipeline, ensure that you have the following Python libraries installed:
+
+- **Dlib** (for object detection and training)
+- **OpenCV** (for image processing and webcam access)
+- **NumPy** (for numerical computations)
+
+To install these dependencies, run the following command:
+
+```bash
+pip install dlib opencv-python numpy
+```
+
+Additionally, make sure you have a C++ compiler installed to build Dlib, as it requires compilation. On Ubuntu, you can install the necessary packages with:
+
+```bash
+sudo apt-get install build-essential cmake
+sudo apt-get install libgtk-3-dev libboost-all-dev
+```
+
+Once these are installed, you should be ready to run the pipeline.
 
 ## Usage Instructions
 
