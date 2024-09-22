@@ -2,31 +2,6 @@ import cv2
 import numpy as np
 import os
 
-def crop_image(input_image, left=145, top=270, width=280, height=210):
-    # Check if the cropping coordinates are valid
-    if left < 0 or top < 0 or width <= 0 or height <= 0 or left + width > input_image.shape[1] or top + height > input_image.shape[0]:
-        print("Error: Invalid cropping coordinates!")
-        return np.array([])  # Return an empty image in case of an error
-
-    # Define the region of interest (ROI) for cropping
-    roi = input_image[top:top + height, left:left + width]
-
-    # Crop the image to the specified ROI
-    cropped_image = roi.copy()  # Use .copy() to copy the data
-
-    return cropped_image
-
-def resize_image(input_image, target_width=427, target_height=240):
-    # Check if the input image is not empty
-    if input_image is None or input_image.size == 0:
-        print("Error: Empty input image!")
-        return np.array([])  # Return an empty image in case of an error
-
-    # Resize the input image to the target size using bilinear interpolation
-    resized_image = cv2.resize(input_image, (target_width, target_height), interpolation=cv2.INTER_LINEAR)
-
-    return resized_image
-
 def resize_with_aspect_ratio(image, target_width=288, target_height=216, color=(0, 0, 0)):
     # Get original dimensions
     h, w = image.shape[:2]

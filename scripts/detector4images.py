@@ -28,9 +28,15 @@ class Detector:
 
         # Display the image with detections
         cv2.imshow('Custom Objects', frame)
-        cv2.waitKey(0)  # Wait for a key press to close the window
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            cv2.destroyAllWindows()
+        # Loop to wait for 'q' key or window close event
+        while True:
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+            # Check if the window is closed
+            if cv2.getWindowProperty('Custom Objects', cv2.WND_PROP_VISIBLE) < 1:
+                break
+        
+        cv2.destroyAllWindows()
 
 if __name__ == '__main__':
     image_path = '../images/validation/001_resized.jpg'  # Specify your image path here

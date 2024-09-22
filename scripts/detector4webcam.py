@@ -4,7 +4,7 @@ import time
 import numpy as np
 
 # Load the SVM model for object detection
-model = dlib.simple_object_detector('../resources/my_detection_model.svm')
+model = dlib.simple_object_detector('../resources/ball_recognition_exemple.svm')
 
 def resize_with_aspect_ratio(image, target_width=288, target_height=216, color=(0, 0, 0)):
     # Get original dimensions
@@ -33,17 +33,6 @@ def resize_with_aspect_ratio(image, target_width=288, target_height=216, color=(
     result[y_offset:y_offset + new_h, x_offset:x_offset + new_w] = resized_image
 
     return result
-
-def resize_image(input_image, target_width=427, target_height=240):
-    # Check if the input image is not empty
-    if input_image is None or input_image.size == 0:
-        print("Error: Empty input image!")
-        return np.array([])  # Return an empty image in case of an error
-
-    # Resize the input image to the target size using bilinear interpolation
-    resized_image = cv2.resize(input_image, (target_width, target_height), interpolation=cv2.INTER_LINEAR)
-
-    return resized_image
 
 class Detector:
     def detect_on_webcam(self, output_video_path):
@@ -100,6 +89,9 @@ class Detector:
             cv2.imshow('Custom Objects', frame)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+            # Check if the window is closed
+            if cv2.getWindowProperty('Custom Objects', cv2.WND_PROP_VISIBLE) < 1:
                 break
 
         cap.release()
